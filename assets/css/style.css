@@ -1,0 +1,40 @@
+* { 
+    font-family:sans-serif;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+main {
+    height: 70vh;
+}
+
+.wrapper {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+
+}
+
+h1 {
+    width: 100%;
+    font-size: 36px;
+    font-weight: bolder;
+}
+
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center
+}

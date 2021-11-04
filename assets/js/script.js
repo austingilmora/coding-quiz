@@ -9,6 +9,8 @@ var ansA = window.document.querySelector("[data-choice='a']");
 var ansB = window.document.querySelector("[data-choice='b']");
 var ansC = window.document.querySelector("[data-choice='c']");
 var ansD = window.document.querySelector("[data-choice='d']");
+var questionCounter = 0;
+var ansButtons = document.querySelectorAll(".ans-choice");
 
 // store questions and answers in array in html format the answers having an id saying if they 
 // are right or wrong
@@ -28,6 +30,30 @@ var questions = [
         C: "Because the KFC was there222",
         D: "Fuck you, Austin222",
         right: "To meet his flatmate222"
+    },
+    {
+        ques: "Why did the Chicken cross the road333?",
+        A: "To get to the other side333",
+        B: "To meet his flatmate333",
+        C: "Because the KFC was there333",
+        D: "Fuck you, Austin333",
+        right: "To meet his flatmate333"
+    },
+    {
+        ques: "Why did the Chicken cross the road?444",
+        A: "To get to the other side444",
+        B: "To meet his flatmate444",
+        C: "Because the KFC was there444",
+        D: "Fuck you, Austin444",
+        right: "To meet his flatmate444"
+    },
+    {
+        ques: "Why did the Chicken cross the road?",
+        A: "To get to the other side",
+        B: "To meet his flatmate",
+        C: "Because the KFC was there",
+        D: "Fuck you, Austin",
+        right: "To meet his flatmate"
     }
 ]
 
@@ -49,26 +75,48 @@ var startQuiz = function() {
 
 
 
-// NEW QUESTION FUNCTION
-function loadQuestion() {
-    // grab new q/a out of the array 
-    var i =0;
-    
-    // take the question and put it in the <h1>
-    questionText.textContent = questions[i].ques;
-    ansA.textContent = questions[i].A;
-    ansB.textContent = questions[i].B;
-    ansC.textContent = questions[i].C;
-    ansD.textContent = questions[i].D;
 
-    // take the answers and put them into buttons 
-}
+
 
 
 
 // CLICK QUESTION FUNCTION
 
 // On a click look for the id
+
+ansButtons.forEach(function (guess) {
+    guess.addEventListener('click', function() {
+        if(this.textContent === questions[questionCounter].right) {
+            console.log("You picked the right answer!")
+            questionCounter++;
+            loadQuestion();
+            return questionCounter;
+        }
+        if(this.textContent != questions[questionCounter].right) {
+            console.log("You suck!");
+            questionCounter++;
+            loadQuestion();
+            return questionCounter;
+        }
+        return questionCounter;
+    });
+});
+
+// NEW QUESTION FUNCTION
+function loadQuestion() {
+    if(questionCounter >= questions.length){
+        quizBox.remove();
+    }
+    else{
+        // take the question and put it in the <h1>
+        questionText.textContent = questions[questionCounter].ques;
+        // take the answers and put them into buttons 
+        ansA.textContent = questions[questionCounter].A;
+        ansB.textContent = questions[questionCounter].B;
+        ansC.textContent = questions[questionCounter].C;
+        ansD.textContent = questions[questionCounter].D;
+    }
+};
 
 //if it is right, run the New question function and set <h2> below to say RIGHT!
 

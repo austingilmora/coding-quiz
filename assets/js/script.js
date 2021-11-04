@@ -11,6 +11,7 @@ var ansC = window.document.querySelector("[data-choice='c']");
 var ansD = window.document.querySelector("[data-choice='d']");
 var questionCounter = 0;
 var ansButtons = document.querySelectorAll(".ans-choice");
+var timer = window.document.querySelector("#timer");
 
 // store questions and answers in array in html format the answers having an id saying if they 
 // are right or wrong
@@ -57,8 +58,27 @@ var questions = [
     }
 ]
 
+function timeScore() {
+    var t = 75
+
+    var timeInterval = setInterval( function() {
+        if (questionCounter >= questions.length) {
+            clearInterval(timeInterval);
+        }
+        else if (t >= 0) {
+            timer.textContent = t
+            t--;
+        }
+        
+    }, 1000);
+}
+
+
 // START BUTTON
 var startQuiz = function() {
+    
+    //start the timer
+    timeScore();
     //remove quiz title
     quizTitle.remove();
     
@@ -68,30 +88,25 @@ var startQuiz = function() {
     quizBox.classList.remove("hidden");
     startButton.remove();
 
+    
     // start the newQ function
     loadQuestion();
 }
-
-
-
-
-
-
-
-
-
 // CLICK QUESTION FUNCTION
 
 // On a click look for the id
 
 ansButtons.forEach(function (guess) {
     guess.addEventListener('click', function() {
+        // if the question is right, load the new question and add 1 to question counter
         if(this.textContent === questions[questionCounter].right) {
             console.log("You picked the right answer!")
             questionCounter++;
             loadQuestion();
             return questionCounter;
         }
+        // if the question is wrong, load the new question and add 1 to questionCounter,
+        // THEN TAKE AWAY 10 FROM THE TIME
         if(this.textContent != questions[questionCounter].right) {
             console.log("You suck!");
             questionCounter++;

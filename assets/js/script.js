@@ -12,6 +12,7 @@ var ansD = window.document.querySelector("[data-choice='d']");
 var questionCounter = 0;
 var ansButtons = document.querySelectorAll(".ans-choice");
 var timer = window.document.querySelector("#timer");
+var highScoreList = window.document.querySelector(".highscore-list");
 
 // store questions and answers in array in html format the answers having an id saying if they 
 // are right or wrong
@@ -120,7 +121,10 @@ ansButtons.forEach(function (guess) {
 // NEW QUESTION FUNCTION
 function loadQuestion() {
     if(questionCounter >= questions.length){
-        quizBox.remove();
+        questionText.remove();
+        answerList.remove();
+        highScoreList.classList.remove("hidden");
+        recordScore();
     }
     else{
         // take the question and put it in the <h1>
@@ -132,6 +136,11 @@ function loadQuestion() {
         ansD.textContent = questions[questionCounter].D;
     }
 };
+function recordScore() {
+    localStorage.setItem("Score", timer.textContent);
+    console.log(localStorage);
+}
+
 
 //if it is right, run the New question function and set <h2> below to say RIGHT!
 

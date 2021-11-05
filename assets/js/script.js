@@ -20,44 +20,44 @@ var t = 75
 // are right or wrong
 var questions = [
     {
-        ques: "Why did the Chicken cross the road?",
-        A: "To get to the other side",
-        B: "To meet his flatmate",
-        C: "Because the KFC was there",
-        D: "Fuck you, Austin",
-        right: "To meet his flatmate"
+        ques: "Which of the following is NOT a JavaScript data type?",
+        A: "Boolean",
+        B: "String",
+        C: "BigInt",
+        D: "SmallInt",
+        right: "SmallInt"
     },
     {
-        ques: "Why did the Chicken cross the road222?",
-        A: "To get to the other side222",
-        B: "To meet his flatmate222",
-        C: "Because the KFC was there222",
-        D: "Fuck you, Austin222",
-        right: "To meet his flatmate222"
+        ques: "What represents a strict equality comparison in JavaScript?",
+        A: "=",
+        B: "==",
+        C: "===",
+        D: "====",
+        right: "==="
     },
     {
-        ques: "Why did the Chicken cross the road333?",
-        A: "To get to the other side333",
-        B: "To meet his flatmate333",
-        C: "Because the KFC was there333",
-        D: "Fuck you, Austin333",
-        right: "To meet his flatmate333"
+        ques: "Which of the following can be used to create a paragraph element in HTML?",
+        A: "<para>",
+        B: "<paragraph>",
+        C: ">p<",
+        D: "<p>",
+        right: "<p>"
     },
     {
-        ques: "Why did the Chicken cross the road?444",
-        A: "To get to the other side444",
-        B: "To meet his flatmate444",
-        C: "Because the KFC was there444",
-        D: "Fuck you, Austin444",
-        right: "To meet his flatmate444"
+        ques: "Which of the following is a string?",
+        A: "'Hello World'",
+        B: "3",
+        C: "var i = 0",
+        D: "true",
+        right: "'Hello World'"
     },
     {
-        ques: "Why did the Chicken cross the road?",
-        A: "To get to the other side",
-        B: "To meet his flatmate",
-        C: "Because the KFC was there",
-        D: "Fuck you, Austin",
-        right: "To meet his flatmate"
+        ques: "Which of the following creates a new header element in JavaScript?",
+        A: "document.querySelector('header')",
+        B: "document.createElement('h1')",
+        C: "document.crateelement(<h1>)",
+        D: "document.querySelector(h1)",
+        right: "document.createElement('h1')"
     }
 ]
 

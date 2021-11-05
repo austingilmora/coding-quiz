@@ -13,6 +13,8 @@ var questionCounter = 0;
 var ansButtons = document.querySelectorAll(".ans-choice");
 var timer = window.document.querySelector("#timer");
 var highScoreList = window.document.querySelector(".highscore-list");
+var scores = [];
+var t = 75
 
 // store questions and answers in array in html format the answers having an id saying if they 
 // are right or wrong
@@ -60,7 +62,6 @@ var questions = [
 ]
 
 function timeScore() {
-    var t = 75
 
     var timeInterval = setInterval( function() {
         if (questionCounter >= questions.length) {
@@ -70,9 +71,10 @@ function timeScore() {
             timer.textContent = t
             t--;
         }
-        
+        return t
     }, 1000);
-}
+    return t
+};
 
 
 // START BUTTON
@@ -101,20 +103,28 @@ ansButtons.forEach(function (guess) {
     guess.addEventListener('click', function() {
         // if the question is right, load the new question and add 1 to question counter
         if(this.textContent === questions[questionCounter].right) {
-            console.log("You picked the right answer!")
             questionCounter++;
             loadQuestion();
+            document.querySelector(".right").classList.remove("hidden");
             return questionCounter;
         }
         // if the question is wrong, load the new question and add 1 to questionCounter,
         // THEN TAKE AWAY 10 FROM THE TIME
         if(this.textContent != questions[questionCounter].right) {
-            console.log("You suck!");
+            t = t - 10;
             questionCounter++;
             loadQuestion();
+            document.querySelector(".wrong").classList.remove("hidden");
             return questionCounter;
         }
         return questionCounter;
+    });
+});
+
+ansButtons.forEach(function (guess) {
+    guess.addEventListener('mouseover', function() {
+        document.querySelector(".right").classList.add("hidden");
+        document.querySelector(".wrong").classList.add("hidden");
     });
 });
 
@@ -123,8 +133,8 @@ function loadQuestion() {
     if(questionCounter >= questions.length){
         questionText.remove();
         answerList.remove();
-        highScoreList.classList.remove("hidden");
         recordScore();
+        window.location.href = "./highscores.html"
     }
     else{
         // take the question and put it in the <h1>
@@ -136,9 +146,33 @@ function loadQuestion() {
         ansD.textContent = questions[questionCounter].D;
     }
 };
+
+function loadScores() {
+    // get scores from local storage
+    var savedScores = localStorage.getItem("scores");
+    if (!savedScores) {
+        return false;
+    }
+    else {
+        scores = JSON.parse(savedScores);
+    }
+
+};
+
 function recordScore() {
-    localStorage.setItem("Score", timer.textContent);
-    console.log(localStorage);
+    var playerName = window.prompt("What is your name?");
+    while (!playerName || playerName === null){
+        window.alert("Please enter your name");
+        playerName = window.prompt("what is your name?")
+    }
+    var playerScore = {
+        nameInput: playerName,
+        score: timer.textContent
+    };
+    
+    scores.push(playerScore);
+    localStorage.setItem("scores", JSON.stringify(scores));
+    console.log(localStorage)
 }
 
 
@@ -148,5 +182,5 @@ function recordScore() {
 
 // if there are no more q/a in the array, record the time, go to the highscore page and enter the highscore
 
-
+loadScores()
 startButton.addEventListener("click", startQuiz);

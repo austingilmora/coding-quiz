@@ -51,6 +51,11 @@ h1 {
     display: none;
 }
 
+.dangerzone {
+    color: red;
+    font-style: italic;
+}
+
 button {
     background-color: #24a0ed;
     border: none;

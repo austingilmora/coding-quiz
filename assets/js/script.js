@@ -15,6 +15,7 @@ var timer = window.document.querySelector("#timer");
 var highScoreList = window.document.querySelector(".highscore-list");
 var scores = [];
 var t = 75
+var restartButton = window.document.querySelector(".restart");
 
 // store questions and answers in array in html format the answers having an id saying if they 
 // are right or wrong
@@ -67,6 +68,13 @@ function timeScore() {
         if (questionCounter >= questions.length) {
             clearInterval(timeInterval);
         }
+        if (t <= -1) {
+            answerList.remove();
+            questionText.textContent = "YOU ARE OUT OF TIME!";
+            questionText.classList.add("dangerzone");
+            restartButton.classList.remove("hidden");
+            restartButton.addEventListener("click", function(){window.location.href = "./index.html"});
+        }
         else if (t >= 0) {
             timer.textContent = t
             t--;
@@ -90,7 +98,6 @@ var startQuiz = function() {
     // reveal buttons
     quizBox.classList.remove("hidden");
     startButton.remove();
-
     
     // start the newQ function
     loadQuestion();

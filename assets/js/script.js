@@ -179,7 +179,6 @@ function recordScore() {
     
     scores.push(playerScore);
     localStorage.setItem("scores", JSON.stringify(scores));
-    console.log(localStorage)
 }
 
 

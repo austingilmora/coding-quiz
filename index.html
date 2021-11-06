@@ -10,9 +10,7 @@
 <body>
     <header>
         <div>
-            <p id="highscore-link">
-                View High Scores
-            </p>
+            <a href="./highscores.html">View Highscores</a>
         </div>
         <div>
             <p id="timer">
@@ -25,13 +23,14 @@
             <h1 class="center quiz-title">Coding Quiz Challenge!</h1>
             <div class= "hidden quiz-wrapper">
                 <h1 class= "question-text"></h1>
-                <ol class="center answer-list">
+                <ul class="center answer-list">
                     <li class="button"><button class="ans-choice" data-choice = "a"></button></li>
                     <li class="button"><button class="ans-choice" data-choice = "b"></button></li>
                     <li class="button"><button class="ans-choice" data-choice = "c"></button></li>
                     <li class="button"><button class="ans-choice" data-choice = "d"></button></li>
-                </ol>
-                <ol class= "highscore-list hidden"></ol>
+                </ul>
+                <h3 class="right hidden">Right!</h3>
+                <h3 class="wrong hidden">Wrong!</h3>
             </div>
             
             <p class="center instructions"> 

@@ -22,6 +22,14 @@ main {
     justify-content: center;
 }
 
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+}
+
 .center {
     text-align: center;
 
@@ -34,11 +42,46 @@ h1 {
 }
 
 .button-wrapper {
-    width: 100%;
+    width: 40%;
     display: flex;
     justify-content: center
 }
 
 .hidden {
     display: none;
+}
+
+button {
+    background-color: #24a0ed;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ol {
+    
+    border:2px, solid, turquoise;
+    width:70%;
+}
+ol li { 
+    background: rgba(36, 160, 237, .5);
+    padding: 5px; 
+}
+ol li:nth-child(odd) {
+    background: white; 
+}
+
+h3 {
+    font-size: 28px;
+    margin: 0;
 }

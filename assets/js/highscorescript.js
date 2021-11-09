@@ -14,7 +14,7 @@ function populateScore() {
     
         scoreList.appendChild(row);
     }
-}
+};
 
 function loadScores() {
     // get scores from local storage

@@ -66,6 +66,7 @@ function timeScore() {
 
     var timeInterval = setInterval( function() {
         if (questionCounter >= questions.length) {
+            timer.textContent = t
             clearInterval(timeInterval);
         }
         if (t <= -1) {
@@ -120,6 +121,7 @@ ansButtons.forEach(function (guess) {
         if(this.textContent != questions[questionCounter].right) {
             t = t - 10;
             questionCounter++;
+            console.log("line 123 " + t);
             loadQuestion();
             document.querySelector(".wrong").classList.remove("hidden");
             return questionCounter;
@@ -140,7 +142,9 @@ function loadQuestion() {
     if(questionCounter >= questions.length){
         questionText.remove();
         answerList.remove();
+        console.log("line 144 " + t)
         recordScore();
+        console.log("line 146 " + t)
         window.location.href = "./highscores.html"
     }
     else{
@@ -174,12 +178,12 @@ function recordScore() {
     }
     var playerScore = {
         nameInput: playerName,
-        score: timer.textContent
+        score: t
     };
     
     scores.push(playerScore);
     localStorage.setItem("scores", JSON.stringify(scores));
-}
+};
 
 
 //if it is right, run the New question function and set <h2> below to say RIGHT!
